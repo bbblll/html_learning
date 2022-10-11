@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span class="star" style="--l:700px;--t:200px;--delay:0s"></span>
+    <span class="star" style="--l:600px;--t:300px;--delay:1s"></span>
+    <span class="star" style="--l:500px;--t:350px;--delay:2s"></span>
+    <span class="star" style="--l:450px;--t:400px;--delay:3s"></span>
+    <span class="star" style="--l:400px;--t:450px;--delay:1s"></span>
+    <span class="star" style="--l:200px;--t:650px;--delay:1s"></span>
+    <span class="star" style="--l:100px;--t:700px;--delay:2s"></span>
+    <span class="star" style="--l:700px;--t:770px;--delay:3s"></span>
+    <div class="box">
+        
+    </div>
+</body>
+
+</html>
+<style>
+    html,
+    body {
+        position: absolute;
+        inset: 0;
+        background-color: black;
+    }
+
+    .box {
+        margin-left: 900px;
+        margin-top: 50px;
+        background-image: linear-gradient(45deg, #f6b73c, #4d9f0c);
+        animation: shining 5s infinite ease-in-out;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .star {
+        position: absolute;
+        left: var(--l);
+        top: var(--t);
+        margin: auto;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-image: linear-gradient(45deg, #f6b73c, #4d9f0c);
+        opacity: 0;
+        animation: run 3s infinite ease-in;
+        animation-delay: var(--delay);
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, .1),
+            0 0 0 3px rgba(255, 255, 255, .1),
+            0 0 0 5px rgba(255, 255, 255, .1);
+    }
+
+    .star::after {
+        display: block;
+        position: absolute;
+        top: 25%;
+        content: '';
+        width: 200px;
+        height: 2px;
+        background-image: linear-gradient(45deg, rgb(255, 255, 255, .5), transparent);
+    }
+
+    @keyframes run {
+        0% {
+            transform: rotate(-60deg) translateX(400px);
+            opacity: 0;
+            filter: hue-rotate(360deg);
+        }
+
+        50% {
+            opacity: .5;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: rotate(-65deg) translateX(0);
+            opacity: 0;
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    @keyframes shining {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+</style>
