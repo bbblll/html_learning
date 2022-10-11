@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #switch {
+        width: 120px;
+        height: 50px;
+        margin: 300px auto;
+    }
+
+    .switch-label {
+        display: block;
+        width: 120px;
+        height: 60px;
+        border: 2px solid #ccc;
+        border-radius: 40px;
+        padding: 2px;
+        background-color: aliceblue;
+    }
+
+    .switch-label::after {
+        display: block;
+        content: '';
+        height: 100%;
+        width: 50%;
+        background-color: brown;
+        position: relative;
+        left: 0;
+        border-radius: 50%;
+        transition: all 0.5s;
+    }
+
+    #change_background:checked+.switch-label::after {
+        left: 50%;
+        background-color: yellowgreen;
+        --background-color: yellowgreen;
+    }
+</style>
+
+<body>
+    <div id="switch">
+        <input type="checkbox" name="" id="change_background" style="display: none;">
+        <label for="change_background" class="switch-label"></label>
+    </div>
+</body>
+
+</html>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        --background-color: brown;
+        background-color: var(--background-color);
+        position: absolute;
+        inset: 0;
+    }
+</style>
