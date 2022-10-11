@@ -36,10 +36,8 @@
         transition: all 0.5s;
     }
 
-    #change_background:checked+.switch-label::after {
-        left: 50%;
-        background-color: yellowgreen;
-        --background-color: yellowgreen;
+    .body-green {
+        background-color: yellowgreen !important;
     }
 </style>
 
@@ -51,6 +49,12 @@
 </body>
 
 </html>
+<script>
+    document.querySelector('.switch-label').addEventListener('click', () => {
+        document.body.classList.toggle('body-green')
+    })
+
+</script>
 
 <style>
     * {
@@ -60,9 +64,14 @@
 
     body,
     html {
-        --background-color: brown;
-        background-color: var(--background-color);
+        background-color: brown;
         position: absolute;
         inset: 0;
+        transition: all .5s;
+    }
+
+    #change_background:checked+.switch-label::after {
+        left: 50%;
+        background-color: yellowgreen;
     }
 </style>
