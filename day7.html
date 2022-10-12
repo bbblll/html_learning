@@ -66,9 +66,9 @@
         width: 196px;
         height: 196px;
         /* 图片透明度 */
-        opacity: 0.8;
+        opacity: 0.95;
         border: 2px solid black;
-        animation: border-shining 5s linear infinite;
+        /* animation: border-shining 5s linear infinite; */
 
     }
 
@@ -150,33 +150,54 @@
             transform: rotateY(0deg) rotateX(0deg) translateY(0px);
         }
 
+        /* 旋转，以及第二张图片展示 */
         5% {
-            transform: rotateY(0deg) rotateX(0deg) translateY(0px);
+            transform: rotateY(90deg) rotateX(0deg) translateY(0px);
         }
 
-        /* 跳起旋转5% */
-        10% {
-            transform: rotateY(0deg) rotateX(1080deg) translateY(-160px);
+        15% {
+            transform: rotateY(90deg) rotateX(0deg) translateY(0px);
         }
 
-        /* 下降旋回5%，第二张图5% */
+        /* 旋转，以及第三张图片展示 */
         20% {
-            transform: rotateY(90deg) rotateX(0deg) translateY(0px);
+            transform: rotateY(180deg) rotateX(0deg) translateY(0px);
         }
 
-        25% {
-            transform: rotateY(90deg) rotateX(0deg) translateY(0px);
-        }
-
-        /* 跳起旋转5% */
         30% {
-            transform: rotateY(90deg) rotateX(1080deg) translateY(-160px);
+            transform: rotateY(180deg) rotateX(0deg) translateY(0px);
         }
 
-        /* 下降旋回5%，第二张图5% */
-        40% {
+        /* 旋转，以及第四张图片展示 */
+        35% {
             transform: rotateY(270deg) rotateX(0deg) translateY(0px);
         }
 
+        45% {
+            transform: rotateY(270deg) rotateX(0deg) translateY(0px);
+        }
+
+        /* 旋转，以及第五张图片展示 */
+        50% {
+            transform: rotateY(360deg) rotateX(90deg) translateY(0px);
+        }
+
+        60% {
+            transform: rotateY(360deg) rotateX(90deg) translateY(0px);
+        }
+
+        /* 旋转，以及第六张图片展示 */
+        65% {
+            transform: rotateY(360deg) rotateX(-90deg) translateY(0px);
+        }
+
+        75% {
+            transform: rotateY(360deg) rotateX(-90deg) translateY(0px);
+        }
+
+        /* 回到最初面 */
+        95% {
+            transform: rotateY(0deg) rotateX(0deg) translateY(0px);
+        }
     }
 </style>
