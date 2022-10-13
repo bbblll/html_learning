@@ -9,20 +9,38 @@
 </head>
 
 <body>
-  <span class="square" style="height: 50px;width: 50px;opacity: 0.5;"></span>
-  <!-- <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li> -->
 </body>
 
 </html>
+<script src="./jquery.js"></script>
 <script>
-  import "jquery.js"
-
+  $(function () {
+    let timer = setInterval(() => {
+      generate_square()
+    }, 2000);
+    function generate_square() {
+      // 放块大小,随机50-400
+      let size = parseInt((400 - 50) * Math.random() + 50)
+      // 透明度，随机0-0.6
+      let opacity = 0.6 * Math.random()
+      // 随机x轴
+      let left = parseInt((100 - 1) * Math.random() + 1)
+      // 生成方块
+      var $span = $(`<span class="square" 
+                            style="
+                            height: ${size}px;
+                            width: ${size}px;
+                            opacity: ${opacity};
+                            left:${left}vw;
+                            ">
+                            </span>`);
+      $("body").append($span);
+      // 十秒后销毁元素
+      setTimeout(() => {
+        $span.remove()
+      }, 15000)
+    }
+  })
 </script>
 <style>
   * {
@@ -36,6 +54,9 @@
     inset: 0;
     background-image: linear-gradient(45deg, #F08080, #F08080, #FFA500);
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .square {
@@ -50,16 +71,16 @@
     opacity: 0.5;
     background-color: #FFFAFA;
     filter: blur(3px);
-    animation: square-moving 12s infinite linear;
+    animation: square-moving 15s infinite linear;
   }
 
   @keyframes square-moving {
     0% {
-      transform: translateY(120vh) rotate(0deg);
+      transform: translateY(80vh) rotate(0deg);
     }
 
     100% {
-      transform: translateY(-20vh) rotate(620deg);
+      transform: translateY(-80vh) rotate(620deg);
     }
   }
 </style>
