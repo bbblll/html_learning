@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>上升方块</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>上升方块</title>
 </head>
 
 <body>
@@ -14,19 +14,19 @@
 </html>
 <script src="./jquery.js"></script>
 <script>
-  $(function () {
-    let timer = setInterval(() => {
-      generate_square()
-    }, 2000);
-    function generate_square() {
-      // 放块大小,随机50-400
-      let size = parseInt((400 - 50) * Math.random() + 50)
-      // 透明度，随机0-0.6
-      let opacity = 0.6 * Math.random()
-      // 随机x轴
-      let left = parseInt((100 - 1) * Math.random() + 1)
-      // 生成方块
-      var $span = $(`<span class="square" 
+	$(function () {
+		let timer = setInterval(() => {
+			generate_square()
+		}, 2000);
+		function generate_square() {
+			// 放块大小,随机50-400
+			let size = parseInt((400 - 50) * Math.random() + 50)
+			// 透明度，随机0-0.6
+			let opacity = 0.6 * Math.random()
+			// 随机x轴
+			let left = parseInt((100 - 1) * Math.random() + 1)
+			// 生成方块
+			var $span = $(`<span class="square" 
                             style="
                             height: ${size}px;
                             width: ${size}px;
@@ -34,53 +34,53 @@
                             left:${left}vw;
                             ">
                             </span>`);
-      $("body").append($span);
-      // 十秒后销毁元素
-      setTimeout(() => {
-        $span.remove()
-      }, 15000)
-    }
-  })
+			$("body").append($span);
+			// 十秒后销毁元素
+			setTimeout(() => {
+				$span.remove()
+			}, 15000)
+		}
+	})
 </script>
 <style>
-  * {
-    padding: 0;
-    margin: 0;
-  }
+	* {
+		padding: 0;
+		margin: 0;
+	}
 
-  html,
-  body {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(45deg, #F08080, #F08080, #FFA500);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	html,
+	body {
+		position: absolute;
+		inset: 0;
+		background-image: linear-gradient(45deg, #F08080, #F08080, #FFA500);
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-  .square {
-    display: block;
-    position: absolute;
-    /* 需要定义，出现位置 */
-    left: 40px;
-    /* 需要设置放块大小 */
-    height: 50px;
-    width: 50px;
-    /* 需要设置透明度 */
-    opacity: 0.5;
-    background-color: #FFFAFA;
-    filter: blur(3px);
-    animation: square-moving 15s infinite linear;
-  }
+	.square {
+		display: block;
+		position: absolute;
+		/* 需要定义，出现位置 */
+		left: 40px;
+		/* 需要设置放块大小 */
+		height: 50px;
+		width: 50px;
+		/* 需要设置透明度 */
+		opacity: 0.5;
+		background-color: #FFFAFA;
+		filter: blur(3px);
+		animation: square-moving 15s infinite linear;
+	}
 
-  @keyframes square-moving {
-    0% {
-      transform: translateY(80vh) rotate(0deg);
-    }
+	@keyframes square-moving {
+		0% {
+			transform: translateY(80vh) rotate(0deg);
+		}
 
-    100% {
-      transform: translateY(-80vh) rotate(620deg);
-    }
-  }
+		100% {
+			transform: translateY(-80vh) rotate(620deg);
+		}
+	}
 </style>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下雪</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<style>
+    html,
+    body {
+        position: absolute;
+        inset: 0;
+        background-color: rgb(0, 0, 0, .6);
+        overflow: hidden;
+    }
+
+    .light {
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: azure;
+        /* filter: blur(2px); */
+        box-shadow: 0 0 2px rgb(255, 255, 255, .8),
+            0 0 8px rgb(255, 255, 255, .7),
+            0 0 10px rgb(255, 255, 255, .5);
+        animation: flying 33s forwards linear;
+    }
+
+    @keyframes flying {
+        0% {
+            transform: translateY(0);
+        }
+
+        20% {
+            transform: translateY(2px);
+        }
+
+        80% {
+            transform: translateY(96vh);
+        }
+
+        100% {
+            transform: translateY(96vh);
+        }
+    }
+</style>
+<script src="./jquery.js"></script>
+<script>
+    $(function () {
+        setInterval(() => {
+            create_light()
+        }, 20);
+        function create_light() {
+            let start_left = 100 * Math.random() + "vw"
+
+            let $light = $(`<div class="light" style="left:${start_left};top:0px;"></div>`)
+            // 添加光点到body
+            $("body").append($light)
+            setTimeout(() => {
+                $light.remove()
+            }, 35000)
+        }
+    })
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标移动</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<style>
+    html,
+    body {
+        position: absolute;
+        inset: 0;
+        background-color: rgb(0, 0, 0, .6);
+        overflow: hidden;
+    }
+
+    .light {
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: azure;
+        filter: blur(2px);
+        box-shadow: 0 0 5px rgb(255, 255, 255, .5);
+    }
+</style>
+<script src="./jquery.js"></script>
+<script>
+    $(function () {
+        let mouse_x = 500;
+        let mouse_y = 500;
+        $("body").mousemove(e => {
+            // 获取鼠标位置
+            mouse_x = e.pageX
+            mouse_y = e.pageY
+        })
+        setInterval(() => {
+            create_light()
+        }, 20);
+
+        function create_light() {// 设置定时器让光点追踪鼠标
+            let distance_x = 1000
+            let distance_y = 1000
+            // 创建光点
+
+            let start_left = (120 * Math.random() - 10)
+            let start_top = (120 * Math.random() - 10)
+            // if ((start_left > 0) && (start_left < 100) && (start_top < 100) && (start_top > 0)) {
+            //     return
+            // }
+            start_left = start_left + "vw"
+            start_top = start_top + "vh"
+
+            let $light = $(`<div class="light" style="left:${start_left};top:${start_top};"></div>`)
+            // 添加光点到body
+            $("body").append($light)
+            let timer = setInterval(() => {
+                console.log(1)
+                // 设置终点
+                if ((Math.abs(distance_x) < 2) && (Math.abs(distance_y) < 2)) {
+                    $light.remove()
+                    clearInterval(timer)
+                }
+                // 获取光点位置,这里必须是小数
+                let item_x = parseFloat($light.css("left"))
+                let item_y = parseFloat($light.css("top"))
+                // 设置定时器让光点追踪鼠标
+                distance_x = (mouse_x - item_x) / 80
+                distance_y = (mouse_y - item_y) / 80
+
+                // 计算位移后的位置
+                let steped_x = distance_x + item_x
+                let steped_y = distance_y + item_y
+
+                // 设置光点位置
+                $light.css({
+                    "left": steped_x,
+                    "top": steped_y
+                })
+            }, 50)
+        }
+    }
+    )
+
+</script>
